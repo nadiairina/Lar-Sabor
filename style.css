@@ -430,3 +430,8 @@ footer p span { /* Adicionei um span ao redor do nome no HTML para estilizar */
         font-size: 1.8em;
     }
 }
+/* Cor do nome no footer */
+.footer-name {
+    color: red; !important; /* Força a cor vermelha */
+    font-weight: bold; /* Para dar mais destaque, se quiser */
+}
