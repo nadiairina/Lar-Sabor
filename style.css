@@ -377,6 +377,8 @@ footer p span {
     position: relative;
     margin: auto; /* Para centralização fallback, embora flexbox seja primário */
     display: flex;
+    /* Adicionado para empilhar a imagem e a legenda */
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     max-width: 90%; /* Largura máxima do conteúdo */
@@ -442,6 +444,18 @@ footer p span {
 .prev-button:hover,
 .next-button:hover {
     background-color: var(--color-red);
+}
+
+/* Estilos para a Legenda da Galeria */
+#caption {
+    margin-top: 15px; /* Espaço entre a imagem e a legenda */
+    color: var(--color-white); /* Cor do texto da legenda */
+    font-size: 1.2em; /* Tamanho da fonte da legenda */
+    text-align: center; /* Centraliza o texto */
+    max-width: 80%; /* Largura máxima para a legenda */
+    padding: 5px 10px; /* Preenchimento para a legenda */
+    background-color: rgba(0,0,0,0.6); /* Fundo semi-transparente para a legenda */
+    border-radius: 5px; /* Bordas arredondadas */
 }
 
 
