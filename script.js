@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const closeButton = document.querySelector('.close-button');
     const prevButton = document.querySelector('.prev-button');
     const nextButton = document.querySelector('.next-button');
+    const captionText = document.getElementById('caption'); // Seleciona o elemento da legenda
     const galleryImages = Array.from(document.querySelectorAll('.image-grid img')); // Converte NodeList para Array
     let currentIndex = 0; // Para acompanhar a imagem atualmente exibida
 
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function openModal(index) {
         currentIndex = index;
         modalImage.src = galleryImages[currentIndex].src;
+        captionText.innerHTML = galleryImages[currentIndex].alt; // Define a legenda com o texto 'alt'
         galleryModal.style.display = 'flex'; // Usar 'flex' para centralizar
         document.body.classList.add('no-scroll'); // Adiciona classe para prevenir scroll no body
     }
@@ -68,12 +70,14 @@ document.addEventListener("DOMContentLoaded", function() {
     function showPrevImage() {
         currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
         modalImage.src = galleryImages[currentIndex].src;
+        captionText.innerHTML = galleryImages[currentIndex].alt; // Atualiza a legenda
     }
 
     // Função para mostrar a imagem seguinte
     function showNextImage() {
         currentIndex = (currentIndex + 1) % galleryImages.length;
         modalImage.src = galleryImages[currentIndex].src;
+        captionText.innerHTML = galleryImages[currentIndex].alt; // Atualiza a legenda
     }
 
     // Event Listeners para abrir o modal ao clicar nas imagens da galeria
