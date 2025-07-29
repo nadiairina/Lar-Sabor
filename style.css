@@ -25,6 +25,11 @@ body {
     background-color: var(--color-white);
 }
 
+/* Adicione esta regra para evitar scroll na página quando o modal estiver aberto */
+body.no-scroll {
+    overflow: hidden;
+}
+
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -245,6 +250,7 @@ h2::after {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Adicionado para indicar que é clicável */
 }
 
 .image-grid img:hover {
@@ -346,6 +352,99 @@ footer p span {
     transform: translateY(0);
 }
 
+/* Estilos para o Modal da Galeria */
+.modal {
+    display: none; /* Escondido por padrão, JavaScript vai mudar para 'flex' */
+    position: fixed; /* Posição fixa na tela */
+    z-index: 2000; /* Acima de tudo o resto */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    overflow: auto; /* Habilitar scroll se a imagem for maior que a tela */
+    background-color: rgba(0,0,0,0.8); /* Fundo preto semi-transparente */
+    justify-content: center; /* Centraliza horizontalmente o conteúdo */
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    animation: fadeIn 0.3s ease-out; /* Animação de entrada */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    position: relative;
+    margin: auto; /* Para centralização fallback, embora flexbox seja primário */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 90%; /* Largura máxima do conteúdo */
+    max-height: 90%; /* Altura máxima do conteúdo */
+}
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 80vh; /* Altura máxima para a imagem dentro do modal */
+    display: block;
+    object-fit: contain; /* Garante que a imagem se ajuste sem cortar */
+}
+
+/* Botão de Fechar */
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 2001; /* Garante que fique acima da imagem */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--color-red);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Botões de Navegação (Anterior/Próximo) */
+.prev-button, .next-button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px; /* Ajusta o posicionamento vertical */
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.6s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: rgba(0,0,0,0.5); /* Fundo semi-transparente para as setas */
+    border-radius: 50%; /* Faz com que as setas fiquem em círculos */
+    padding: 10px 15px; /* Ajusta o padding para o círculo */
+    text-decoration: none; /* Remove sublinhado dos links */
+}
+
+.prev-button {
+    left: 20px;
+}
+
+.next-button {
+    right: 20px;
+}
+
+/* Efeitos hover para os botões de navegação */
+.prev-button:hover,
+.next-button:hover {
+    background-color: var(--color-red);
+}
+
+
 /* Responsividade */
 @media (max-width: 768px) {
     nav {
@@ -392,6 +491,27 @@ footer p span {
     .social-links a {
         font-size: 2em;
         margin: 0 10px;
+    }
+
+    /* Ajuste para modal em telas pequenas */
+    .close-button {
+        font-size: 30px;
+        top: 10px;
+        right: 15px;
+    }
+
+    .prev-button, .next-button {
+        font-size: 24px;
+        padding: 8px 12px;
+        margin-top: -40px;
+    }
+
+    .prev-button {
+        left: 10px;
+    }
+
+    .next-button {
+        right: 10px;
     }
 }
 
