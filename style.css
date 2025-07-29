@@ -41,7 +41,7 @@ body {
 
 /* Cabeçalho e Navegação */
 header {
-    background-color: var(--color-white);
+    background-color: var(--color-white); /* Voltou a ser branco */
     padding: 20px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: fixed;
@@ -328,8 +328,8 @@ footer p {
     font-size: 0.9em;
 }
 
-footer p span { /* Adicionei um span ao redor do nome no HTML para estilizar */
-    color: red;
+footer p span {
+    color: var(--color-red) !important; /* CORREÇÃO FINAL: Garante o vermelho */
     font-weight: bold;
 }
 
@@ -430,4 +430,3 @@ footer p span { /* Adicionei um span ao redor do nome no HTML para estilizar */
         font-size: 1.8em;
     }
 }
-
